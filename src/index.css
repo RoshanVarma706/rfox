@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-paper font-sans text-ink antialiased;
+    font-feature-settings: "ss01" on, "cv05" on;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display font-bold tracking-[-0.03em];
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background: #e51828;
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid #e51828;
+    outline-offset: 3px;
+  }
+
+  input,
+  select,
+  textarea,
+  button {
+    font: inherit;
+    color: inherit;
+  }
+
+  select option {
+    background: #141418;
+    color: #f4f2ee;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-[1280px] px-5 sm:px-8;
+  }
+
+  .label {
+    @apply text-[10.5px] font-semibold uppercase leading-none tracking-label text-muted;
+  }
+
+  .rule {
+    @apply border-line;
+  }
+
+  .stitch {
+    background-image: repeating-linear-gradient(
+      to right,
+      rgba(244, 242, 238, 0.22) 0 6px,
+      transparent 6px 12px
+    );
+  }
+
+  .link-line {
+    @apply relative inline-block;
+  }
+  .link-line::after {
+    content: "";
+    @apply absolute -bottom-0.5 left-0 h-px w-full origin-right scale-x-0 bg-current transition-transform duration-500;
+  }
+  .link-line:hover::after {
+    @apply origin-left scale-x-100;
+  }
+
+  .field {
+    @apply w-full rounded-none border-b border-line bg-transparent px-0 py-3 text-[15px] text-ink outline-none transition-colors placeholder:text-muted/60 focus:border-ink;
+  }
+
+  .panel {
+    @apply rounded-[2px] border border-line bg-cream;
+  }
+}
+
+@layer utilities {
+  /* Honeycomb lattice from the Rfox reference artwork. */
+  .hex-grid {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='104'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='.055' stroke-width='1.2'%3E%3Cpath d='M30 2l26 15v30L30 62 4 47V17zM0 66l4-2M60 66l-4-2M30 62v30'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 60px 104px;
+  }
+
+  .grain {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    opacity: 0.1;
+    mix-blend-mode: overlay;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .art-stage {
+    background-image: radial-gradient(
+      72% 58% at 50% 30%,
+      rgba(255, 255, 255, 0.11) 0%,
+      rgba(255, 255, 255, 0) 68%
+    );
+    background-color: #141418;
+  }
+
+  .safe-bottom {
+    padding-bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  .hide-spin::-webkit-outer-spin-button,
+  .hide-spin::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
