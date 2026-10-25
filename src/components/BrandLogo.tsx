@@ -6,9 +6,9 @@ import { cn } from "@/lib/utils";
  */
 export function BrandLogo({ className, label = "Rfox" }: { className?: string; label?: string }) {
   return (
-    <span className={cn("inline-flex select-none items-center gap-[0.3em]", className)} role="img" aria-label={label}>
-      <img src="/rfox-mark.svg" alt="" draggable={false} className="h-full w-auto shrink-0" />
-      <img src="/rfox-wordmark.png" alt="" draggable={false} className="h-[76%] w-auto" />
+    <span className={cn("inline-flex select-none items-center gap-[0.34em]", className)} role="img" aria-label={label}>
+      <img src="/rfox-mark.png" alt="" draggable={false} className="h-full w-auto shrink-0" />
+      <img src="/rfox-wordmark.png" alt="" draggable={false} className="h-[83%] w-auto" />
     </span>
   );
 }
